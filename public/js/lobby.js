@@ -48,7 +48,7 @@ if (enterGameBtn) {
     if (playerName && playerName.trim()) {
       sessionStorage.setItem('playerName', playerName.trim());
       sessionStorage.setItem('gameCode', createdGameCode);
-      window.location.href = '/game.html';
+      window.location.href = 'game.html';
     }
   });
 }
@@ -79,7 +79,7 @@ socket.on('joinedGame', (data) => {
   sessionStorage.setItem('playerName', data.player.name);
   sessionStorage.setItem('gameCode', data.gameId);
   sessionStorage.setItem('playerId', data.player.id);
-  window.location.href = '/game.html';
+  window.location.href = 'game.html';
 });
 
 // Error handling

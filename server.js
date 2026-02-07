@@ -12,11 +12,20 @@ const io = socketIo(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
-  }
+  },
+  path: '/monopoly/socket.io/'
 });
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+// Base path for serving
+const BASE_PATH = '/monopoly';
+
+// Serve static files at /monopoly
+app.use(BASE_PATH, express.static(path.join(__dirname, 'public')));
+
+// Redirect root to /monopoly
+app.get('/', (req, res) => {
+  res.redirect(BASE_PATH);
+});
 
 // Game instances storage
 const games = new Map();
@@ -239,7 +248,7 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`🎲 Clawnopoly server running on port ${PORT}`);
-  console.log(`Open http://localhost:${PORT} to play!`);
+  console.log(`Open http://localhost:${PORT}/monopoly to play!`);
 });
