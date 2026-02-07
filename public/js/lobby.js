@@ -1,5 +1,7 @@
 // Lobby JavaScript
-const socket = io();
+const socket = io({
+  path: '/monopoly/socket.io/'
+});
 
 // Elements
 const createGameBtn = document.getElementById('createGameBtn');
@@ -11,6 +13,16 @@ const gameCodeDisplay = document.getElementById('gameCodeDisplay');
 const enterGameBtn = document.getElementById('enterGameBtn');
 
 let createdGameCode = null;
+
+// Connection status
+socket.on('connect', () => {
+  console.log('Connected to server:', socket.id);
+});
+
+socket.on('connect_error', (err) => {
+  console.error('Connection error:', err);
+  alert('Failed to connect to game server. Please refresh the page.');
+});
 
 // Create game
 if (createGameBtn) {

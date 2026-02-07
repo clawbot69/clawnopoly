@@ -1,5 +1,7 @@
 // Game JavaScript
-const socket = io();
+const socket = io({
+  path: '/monopoly/socket.io/'
+});
 
 // Game state
 let gameState = {
