@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawnopoly - Game</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <header class="game-header">
+      <h1>🎲 Clawnopoly</h1>
+      <div class="game-info">
+        <span id="gameCode"></span>
+        <span id="turnInfo"></span>
+      </div>
+    </header>
+
+    <main class="game-main">
+      <!-- Game Board -->
+      <div class="board-container">
+        <div id="board" class="board"></div>
+      </div>
+
+      <!-- Side Panel -->
+      <aside class="side-panel">
+        <!-- Players List -->
+        <div class="panel-section">
+          <h3>Players</h3>
+          <div id="playersList" class="players-list"></div>
+        </div>
+
+        <!-- Current Player Actions -->
+        <div class="panel-section" id="actionsPanel">
+          <h3>Actions</h3>
+          <div id="actionButtons" class="action-buttons">
+            <button id="rollBtn" class="btn-primary hidden">Roll Dice</button>
+            <button id="buyBtn" class="btn-success hidden">Buy Property</button>
+            <button id="endTurnBtn" class="btn-secondary hidden">End Turn</button>
+            <button id="payJailBtn" class="btn-danger hidden">Pay $50 Jail Fine</button>
+            <button id="useJailCardBtn" class="btn-warning hidden">Use Jail Card</button>
+          </div>
+        </div>
+
+        <!-- Game Log -->
+        <div class="panel-section">
+          <h3>Game Log</h3>
+          <div id="gameLog" class="game-log"></div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Dice Modal -->
+    <div id="diceModal" class="modal hidden">
+      <div class="modal-content dice-modal">
+        <div class="dice-container">
+          <div class="dice" id="dice1">🎲</div>
+          <div class="dice" id="dice2">🎲</div>
+        </div>
+        <div class="dice-total" id="diceTotal"></div>
+      </div>
+    </div>
+
+    <!-- Chaos Event Modal -->
+    <div id="chaosModal" class="modal hidden">
+      <div class="modal-content chaos-modal">
+        <div class="chaos-icon">⚡</div>
+        <h2>Chaos Event!</h2>
+        <h3 id="chaosName"></h3>
+        <p id="chaosDescription"></p>
+        <div id="chaosResult" class="chaos-result"></div>
+        <button id="closeChaosBtn" class="btn-primary">Continue</button>
+      </div>
+    </div>
+
+    <!-- Card Modal -->
+    <div id="cardModal" class="modal hidden">
+      <div class="modal-content card-modal">
+        <div class="card-type" id="cardType"></div>
+        <p id="cardText" class="card-text"></p>
+        <button id="closeCardBtn" class="btn-primary">OK</button>
+      </div>
+    </div>
+
+    <!-- Tile Info Modal -->
+    <div id="tileModal" class="modal hidden">
+      <div class="modal-content tile-modal">
+        <h3 id="tileName"></h3>
+        <div id="tileInfo"></div>
+        <button id="closeTileBtn" class="btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/game.js"></script>
+</body>
+</html>

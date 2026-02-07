@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clawnopoly - Lobby</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎲 Clawnopoly</h1>
+      <p class="tagline">Where chaos reigns supreme!</p>
+    </header>
+
+    <main class="lobby">
+      <div class="card">
+        <h2>Create New Game</h2>
+        <p>Start a new game and invite your friends!</p>
+        <button id="createGameBtn" class="btn-primary">Create Game</button>
+      </div>
+
+      <div class="card">
+        <h2>Join Game</h2>
+        <p>Enter a game code to join an existing game.</p>
+        <input type="text" id="gameCodeInput" placeholder="Enter game code" maxlength="8">
+        <input type="text" id="playerNameInput" placeholder="Your name" maxlength="20">
+        <button id="joinGameBtn" class="btn-secondary">Join Game</button>
+      </div>
+    </main>
+
+    <div id="gameCreatedModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Game Created! 🎉</h2>
+        <p>Share this code with your friends:</p>
+        <div class="game-code" id="gameCodeDisplay"></div>
+        <p class="hint">Click to copy</p>
+        <button id="enterGameBtn" class="btn-primary">Enter Game Room</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>Made with 🎲 and chaos</p>
+    </footer>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/lobby.js"></script>
+</body>
+</html>
