@@ -217,6 +217,10 @@ socket.on('gameStarted', (data) => {
   gameState.players = data.players;
   gameState.currentPlayer = data.currentPlayer;
   
+  // Hide waiting panel, show actions
+  if (waitingPanel) waitingPanel.classList.add('hidden');
+  if (actionsPanel) actionsPanel.classList.remove('hidden');
+  
   renderBoard();
   renderPlayers();
   updateTurnInfo();
@@ -227,6 +231,13 @@ socket.on('playerJoined', (data) => {
   gameState.players = data.players;
   renderPlayers();
   addLogEntry(`A new player joined the game`, 'system');
+  
+  // Show start button if we have 2+ players
+  if (gameState.players.length >= 2 && startGameBtn) {
+    startGameBtn.classList.remove('hidden');
+    startHint.style.display = 'none';
+    waitingText.textContent = 'Ready to start!';
+  }
 });
 
 socket.on('diceRolled', (data) => {
@@ -340,6 +351,14 @@ if (payJailBtn) {
 if (useJailCardBtn) {
   useJailCardBtn.addEventListener('click', () => {
     socket.emit('useJailCard');
+  });
+}
+
+if (startGameBtn) {
+  startGameBtn.addEventListener('click', () => {
+    socket.emit('startGame');
+    startGameBtn.disabled = true;
+    startGameBtn.textContent = 'Starting...';
   });
 }
 
