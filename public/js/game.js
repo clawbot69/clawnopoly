@@ -29,6 +29,11 @@ const chaosModal = document.getElementById('chaosModal');
 const cardModal = document.getElementById('cardModal');
 const gameCodeEl = document.getElementById('gameCode');
 const turnInfoEl = document.getElementById('turnInfo');
+const waitingPanel = document.getElementById('waitingPanel');
+const actionsPanel = document.getElementById('actionsPanel');
+const startGameBtn = document.getElementById('startGameBtn');
+const waitingText = document.getElementById('waitingText');
+const startHint = document.getElementById('startHint');
 
 // Initialize
 function init() {

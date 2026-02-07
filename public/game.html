@@ -30,8 +30,16 @@
           <div id="playersList" class="players-list"></div>
         </div>
 
-        <!-- Current Player Actions -->
-        <div class="panel-section" id="actionsPanel">
+        <!-- Waiting Room (shown before game starts) -->
+        <div class="panel-section" id="waitingPanel">
+          <h3>Waiting Room</h3>
+          <p id="waitingText">Waiting for more players...</p>
+          <button id="startGameBtn" class="btn-primary hidden">Start Game</button>
+          <p class="hint" id="startHint" style="display:none;">Need at least 2 players to start</p>
+        </div>
+
+        <!-- Current Player Actions (shown during game) -->
+        <div class="panel-section hidden" id="actionsPanel">
           <h3>Actions</h3>
           <div id="actionButtons" class="action-buttons">
             <button id="rollBtn" class="btn-primary hidden">Roll Dice</button>
